@@ -53,7 +53,7 @@ fun DetailsScreen(
                 }
             },
             onBookmarkClick = {
-                event(DetailsEvent.SaveArticle)
+                event(DetailsEvent.UpsertDeleteArticle(article))
             },
             onShareClick = {
                 Intent(Intent.ACTION_SEND).also {
@@ -89,13 +89,13 @@ fun DetailsScreen(
                 Spacer(Modifier.height(MediumPadding1))
 
                 Text(
-                    text = article.title,
+                    text = article.title.orEmpty(),
                     style = MaterialTheme.typography.bodyMedium,
                     color = colorResource(R.color.text_title)
                 )
 
                 Text(
-                    text = article.content,
+                    text = article.content.orEmpty(),
                     style = MaterialTheme.typography.bodyMedium,
                     color = colorResource(R.color.body)
                 )

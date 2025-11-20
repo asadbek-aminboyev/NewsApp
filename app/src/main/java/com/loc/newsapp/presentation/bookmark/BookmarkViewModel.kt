@@ -9,6 +9,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import javax.inject.Inject
+import kotlin.collections.reversed
 
 @HiltViewModel
 class BookmarkViewModel @Inject constructor(
@@ -24,7 +25,7 @@ class BookmarkViewModel @Inject constructor(
 
     private fun getArticles() {
         newsUseCases.selectArticles().onEach {
-            _state.value = _state.value.copy(articles = it)
+            _state.value = _state.value.copy(articles = it.asReversed())
         }.launchIn(viewModelScope)
     }
 

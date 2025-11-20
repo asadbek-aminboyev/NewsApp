@@ -27,13 +27,13 @@ import com.loc.newsapp.domain.model.Article
 import com.loc.newsapp.presentation.Dimens.MediumPadding1
 import com.loc.newsapp.presentation.common.ArticlesList
 import com.loc.newsapp.presentation.common.SearchBar
-import com.loc.newsapp.presentation.nvgraph.Route
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun HomeScreen(
     articles: LazyPagingItems<Article>,
-    navigate: (String) -> Unit
+    navigateToSearch: () -> Unit,
+    navigateToDetails: (Article) -> Unit
 ) {
 
     val titles by remember {
@@ -70,7 +70,9 @@ fun HomeScreen(
             text = "",
             readOnly = true,
             onValueChange = {},
-            onClick = {},
+            onClick = {
+                navigateToSearch()
+            },
             onSearch = {}
         )
 
@@ -93,9 +95,8 @@ fun HomeScreen(
                 .padding(horizontal = MediumPadding1),
             articles = articles,
             onClick = {
-                navigate(Route.DetailsScreen.route)
+                navigateToDetails(it)
             }
         )
     }
-
 }
