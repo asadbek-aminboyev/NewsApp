@@ -20,6 +20,7 @@ import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import com.loc.newsapp.data.local.NewsDao
 import com.loc.newsapp.domain.model.Article
 import com.loc.newsapp.domain.model.Source
+import com.loc.newsapp.presentation.common.EmptyScreen
 import com.loc.newsapp.presentation.nvgraph.NavGraph
 import com.loc.newsapp.ui.theme.NewsAppTheme
 import dagger.hilt.android.AndroidEntryPoint
@@ -56,6 +57,7 @@ class MainActivity : ComponentActivity() {
                 ) {
                     val startDestination = viewModel.startDestination
                     NavGraph(startDestination = startDestination)
+//                    EmptyScreen()
                 }
             }
         }
